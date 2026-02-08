@@ -13,7 +13,32 @@
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
         html { scroll-behavior: smooth; }
         .glass-nav { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.05); }
-        .hero-gradient { background: radial-gradient(circle at top right, #1e3a8a, #0f172a); }
+        .hero-bg {
+  position: relative;
+  background-image: url("hero-solar.jpg"); /* YOUR IMAGE */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Blue shade overlay */
+.hero-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    rgba(15, 23, 42, 0.85),
+    rgba(30, 58, 138, 0.65)
+  );
+  z-index: 0;
+}
+
+/* Keep content above overlay */
+.hero-bg > * {
+  position: relative;
+  z-index: 1;
+}
         .bento-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); border: 1px solid rgba(0,0,0,0.05); }
         .bento-card:hover { transform: translateY(-8px); box-shadow: 0 30px 60px rgba(0,0,0,0.08); }
         .brand-logo { filter: none; opacity: 0.6; transition: 0.3s; }
@@ -46,7 +71,7 @@
         </div>
     </nav>
 
-    <section id="home" class="pt-32 pb-24 hero-gradient text-white overflow-hidden">
+    <section id="home" class="pt-32 pb-24 hero-bg text-white overflow-hidden">
         <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
             <div data-aos="fade-up">
                 <span class="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-400/20 text-blue-300 text-xs font-bold px-4 py-2 rounded-full mb-6 uppercase tracking-widest">
